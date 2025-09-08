@@ -1,0 +1,247 @@
+.ai-pdf-extractor {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.ai-pdf-extractor h2 {
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.prompt-section {
+  margin-bottom: 1.5rem;
+}
+
+.prompt-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.prompt-section input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.prompt-section input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+.dropzone {
+  border: 2px dashed #cbd5e0;
+  border-radius: 0.75rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+  margin-bottom: 1.5rem;
+}
+
+.dropzone:hover, .dropzone.active {
+  border-color: #4299e1;
+  background-color: #ebf8ff;
+}
+
+.dropzone.loading {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  color: #718096;
+  margin-bottom: 1rem;
+}
+
+.dropzone p {
+  margin: 0.5rem 0;
+  color: #4a5568;
+}
+
+.dropzone .small {
+  font-size: 0.875rem;
+  color: #a0aec0;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  font-size: 2rem;
+  color: #4299e1;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  background-color: #fff5f5;
+  border-left: 4px solid #f56565;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.error-icon {
+  color: #f56565;
+  flex-shrink: 0;
+}
+
+.retry-button, .new-file-button {
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  margin-top: 0.5rem;
+}
+
+.retry-button:hover, .new-file-button:hover {
+  background-color: #3182ce;
+}
+
+.result-container {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.result-header h3 {
+  margin: 0;
+  color: #2d3748;
+}
+
+.result-content {
+  padding: 1.5rem;
+}
+
+.result-section {
+  margin-bottom: 1.5rem;
+}
+
+.result-section h4 {
+  color: #4a5568;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.result-section p, .result-section ul {
+  color: #4a5568;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.result-section ul {
+  padding-left: 1.25rem;
+}
+
+.result-section li {
+  margin-bottom: 0.25rem;
+}
+
+.metadata-section {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #edf2f7;
+}
+
+.metadata-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.metadata-label {
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 0.25rem;
+}
+
+.raw-data-toggle {
+  margin-top: 2rem;
+  border-top: 1px solid #edf2f7;
+  padding-top: 1.5rem;
+}
+
+.raw-data-toggle summary {
+  color: #4299e1;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+.raw-data {
+  background-color: #f7fafc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.875rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ai-pdf-extractor {
+    padding: 1rem;
+  }
+  
+  .metadata-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .result-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .new-file-button {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,42 +1,81 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Keep any custom logo styles you need */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.app-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-top: 72px; /* Space for fixed navigation */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.liquid-background {
+  position: fixed;
+  top: 72px; /* Below the navigation */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 72px);
+  z-index: 0;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.liquid-background.viewer-mode {
+  opacity: 0.4;
+}
+
+.app-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Ensure content is properly spaced and visible */
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove unused styles */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .liquid-background {
+    opacity: 0.7;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .liquid-background.viewer-mode {
+    opacity: 0.3;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
