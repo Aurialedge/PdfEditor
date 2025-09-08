@@ -1,41 +1,35 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface PdfUploaderProps {
-  onFileSelect: (file: File) => void;
+  onFileSelect?: (file: File) => void;
 }
 
-export default function PdfUploader({ onFileSelect }: PdfUploaderProps) {
-  const [fileName, setFileName] = useState<string>("");
+const PdfUploader: React.FC<PdfUploaderProps> = ({ onFileSelect }) => {
+  const [file, setFile] = useState<File | null>(null);
+  const navigate = useNavigate();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-
-      // only allow PDFs
-      if (file.type !== "application/pdf") {
-        alert("Please upload a valid PDF file.");
-        return;
-      }
-
-      setFileName(file.name);
-      onFileSelect(file);
+    const selectedFile = e.target.files?.[0] || null;
+    if (selectedFile) {
+      setFile(selectedFile);
+      onFileSelect?.(selectedFile);
     }
   };
 
   return (
-    <div className="p-4 border rounded-md shadow-sm">
-      <label className="block mb-2 font-medium text-gray-700">
-        Upload PDF
-      </label>
-      <input
-        type="file"
-        accept="application/pdf"
-        onChange={handleFileChange}
-        className="block w-full text-sm text-gray-600"
-      />
-      {fileName && (
-        <p className="mt-2 text-sm text-green-700">Selected: {fileName}</p>
+    <div className="p-4 border rounded">
+      <input type="file" accept="application/pdf" onChange={handleFileChange} />
+      {file && (
+        <button
+          onClick={() => navigate("/viewer", { state: { file } })}
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          View PDF
+        </button>
       )}
     </div>
   );
-}
+};
+
+export default PdfUploader;

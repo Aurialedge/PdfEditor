@@ -1,22 +1,14 @@
-import { useState } from 'react'
-import Pdfupload from './components/PdfUploader.tsx'
-import PdfViewer from './components/PdfViewer.tsx'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import PdfUploader from "./components/PdfUploader";
+import PdfViewer from "./components/PdfViewer";
 
 function App() {
-  const [pdfFile, setPdfFile] = useState<File | null>(null)
-
-  const handleFileUpload = (file: File) => {
-    setPdfFile(file)
-  }
-
   return (
-    <div className="App">
-      <h1>PDF Editor</h1>
-      <Pdfupload onFileUpload={handleFileUpload} />
-      {pdfFile && <PdfViewer file={pdfFile} />}
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<PdfUploader />} />
+      <Route path="/viewer" element={<PdfViewer />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
